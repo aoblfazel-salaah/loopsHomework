@@ -5,29 +5,38 @@ import java.util.Scanner;
 public class task4 {
     public static void main(String[] args) {
 
-        Scanner scan= new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Do you want to buy sth");
-        boolean buyItem=scan.nextBoolean();
-        System.out.println("What is the price of the item");
-        int price= scan.nextInt();
 
-        int moneyPaid=0;
+        boolean addItem;
+        double prices = 0;
+        double moneyPaid = 0;
 
-        while (buyItem){
-            if (moneyPaid<price){
-                System.out.println("You owe : "+(price-moneyPaid));
-                System.out.println("How much do you want to pay?");
-                moneyPaid= moneyPaid+ scan.nextInt();
-            }else if (moneyPaid==price){
-                System.out.println("Thank you for shopping");
-                break;
-            }else {
-                System.out.println("Here is your change of : "+ (moneyPaid-price)+"$");
-                System.out.println("Thank you for shopping");
+         do {
+            System.out.println("Do you want to add any item?");
+            addItem = scan.nextBoolean();
+            if (addItem){
+                System.out.println("What is the price of the item");
+            } else{
                 break;
             }
+            prices = prices + scan.nextDouble();
+             System.out.println("Your total is :"+prices+"$");
+        } while (addItem);
 
+        do {
+            System.out.println("Your total remaining is : " + (prices - moneyPaid)+"$");
+            System.out.println("How much do you want to pay?");
+            moneyPaid = moneyPaid + scan.nextDouble();
+        } while (moneyPaid < prices);
+
+        if (moneyPaid == prices) {
+            System.out.println("Thank you for shopping");
+        } else {
+            System.out.println("Here is your change of : " + (moneyPaid - prices) + "$");
+            System.out.println("Thank you for shopping");
         }
+
     }
 }
+
