@@ -1,3 +1,5 @@
+package Whiles;
+
 public class Task1 {
     public static void main(String[] args) {
         boolean workDay=true;
